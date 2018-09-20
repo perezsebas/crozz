@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   opened: boolean = false;
   title: string = 'Crozz Routes';
-  plate: string = 'ABC124';
+  plates: string[] = ['ABC124', 'FRD345', 'GTS567', 'MDR038'];
   position: boolean = false;
   lat: number;
   lng: number;

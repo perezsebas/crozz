@@ -7,11 +7,8 @@
         <button type="button" class="btn btn-danger btn-sm float-right" (click)="closeSidebar()">X</button>
         <p class="d-inline mt-0">Vehicles</p>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Active</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+      <li class="nav-item" *ngFor="let plate of plates; let i = index">
+        <a class="nav-link" href="#">{{plate}}</a>
       </li>
     </ul>
 
