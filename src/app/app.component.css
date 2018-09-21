@@ -7,3 +7,20 @@ agm-map {
   text-align: center;
   /* height: 100vh; */
 }
+
+.nav-link{
+  color: #ffffff;
+}
+
+.nav-link:hover{
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.vehiclesTitle{
+  margin-top: 10px;
+  margin: 10px 0 10px 28px;
+  font-size: 19px;
+  font-weight: bold;
+}
+
