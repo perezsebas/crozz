@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -43,11 +44,28 @@ export class AppComponent implements OnInit {
   origin: {};
   destination: {};
 
-  constructor() { }
+  vehicle: any;
+
+  constructor(
+    private ApiService: ApiService
+  ) { }
 
   ngOnInit() {
     // this.getDirection();
     // this.placeMarker(0);
+
+    this.getApi();
+  }
+
+  getApi() {
+
+    this.ApiService.getVehicles()
+      .subscribe(res => {
+        this.vehicle = res.json();
+        console.log(`Start Lat: ${this.vehicle.start.lat}`);
+        console.log(`End Lng: ${this.vehicle.end.lng}`);
+      });
+
   }
 
   getDirection() {

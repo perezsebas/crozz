@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
@@ -14,6 +15,7 @@ import { SidebarModule } from 'ng-sidebar';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBpDABlge67geKV8UJAjFWu7vMtw6PYU9U'
     }),
