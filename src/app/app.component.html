@@ -5,10 +5,10 @@
     <ul class="nav flex-column">
       <li class="nav-item">
         <button type="button" class="btn btn-danger btn-sm float-right" (click)="closeSidebar()">X</button>
-        <p class="d-inline-block vehiclesTitle">Vehicles</p>
+        <p class="d-inline-block vehiclesTitle">Automóviles</p>
       </li>
       <li class="nav-item" *ngFor="let vehicle of vehicles; let i = index">
-        <a class="nav-link" (click)="placeMarker(i)" href="#">{{vehicle.plate}}</a>
+        <a class="nav-link" (click)="placeMarker(i)" href="#">{{vehicle.placa}}</a>
       </li>
     </ul>
 
@@ -19,20 +19,23 @@
     <div class="container">
 
       <div class="row">
-        <div class="col-2">
-          <button type="button" class="btn btn-primary btn-sm" (click)="openSidebar()">---</button>
+        <div class="col-4 col-sm-3 col-md-2">
+          <button type="button" class="btn btn-primary btn-sm" (click)="openSidebar()">Ver Automóviles</button>
         </div>
-        <div class="col-10">
+        <div class="col-8 col-sm-6 col-md-8">
           <h3>{{title}}</h3>
         </div>
       </div>
 
       <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" *ngIf="vehicleChosen">
-        <agm-marker *ngIf="position" [latitude]="lat" [longitude]="lng">
-          <agm-info-window>{{vehicleChosen.plate}}</agm-info-window>
-        </agm-marker>
-        <agm-direction [origin]="origin" [destination]="destination">
+
+        <agm-direction *ngIf="markerPosition" [origin]="origin" [destination]="destination">
         </agm-direction>
+
+        <agm-marker *ngIf="markerPosition" [latitude]="current.lat" [longitude]="current.lng" [zIndex]="zIndex" [iconUrl]="iconUrl">
+          <agm-info-window>{{vehicleChosen.placa}}</agm-info-window>
+        </agm-marker>
+
       </agm-map>
 
       <div *ngIf="!vehicleChosen">

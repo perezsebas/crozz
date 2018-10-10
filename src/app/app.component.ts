@@ -8,77 +8,49 @@ import { ApiService } from './services/api.service';
 })
 export class AppComponent implements OnInit {
   opened: boolean = false;
-  title: string = 'Crozz Routes';
-  vehicles: any = [
-    {
-      plate: 'ABC124',
-      lat: 6.280011,
-      lng: -75.442734,
-      chosen: true
-    },
-    {
-      plate: 'GTS567',
-      lat: 6.023513,
-      lng: -75.121733,
-      chosen: false
-    },
-    {
-      plate: 'FRD345',
-      lat: 5.841655,
-      lng: -74.595009,
-      chosen: false
-    },
-    {
-      plate: 'MDR038',
-      lat: 5.375395,
-      lng: -74.586256,
-      chosen: false
-    }
-  ];
-  // vehicleChosen: any = this.vehicles[0];
+  title: string;
+  vehicles: any;
   vehicleChosen: any = false;
-  position: boolean = false;
-  lat: number;
-  lng: number;
+  data: any;
+  markerPosition: boolean = false;
   zoom: number = 11;
+  zIndex: number = 1000;
+  iconUrl: string = './favicon.ico';
+  current: {};
   origin: {};
   destination: {};
-
-  vehicle: any;
 
   constructor(
     private ApiService: ApiService
   ) { }
 
   ngOnInit() {
-    // this.getDirection();
-    // this.placeMarker(0);
-
-    this.getApi();
+    this.getListVehicles();
   }
 
-  getApi() {
-
+  getListVehicles() {
     this.ApiService.getVehicles()
       .subscribe(res => {
-        this.vehicle = res.json();
-        console.log(`Start Lat: ${this.vehicle.start.lat}`);
-        console.log(`End Lng: ${this.vehicle.end.lng}`);
+        this.vehicles = res.json();
       });
-
   }
 
-  getDirection() {
-    this.origin = { lat: 6.25184, lng: -75.56359 }
-    this.destination = { lat: 4.624335, lng: -74.063644 }
+  getVehicleData() {
+    this.ApiService.getVehicleData(this.vehicleChosen.Authorization)
+      .subscribe(res => {
+        this.data = res.json();
+        this.origin = { lat: +this.data.start.lat, lng: +this.data.start.lng };
+        this.destination = { lat: +this.data.end.lat, lng: +this.data.end.lng };
+        this.current = { lat: +this.data.current.lat, lng: +this.data.current.lng };
+        this.markerPosition = true;
+      });
   }
 
   placeMarker(i) {
-    this.getDirection();
     this.vehicleChosen = this.vehicles[i];
-    this.lat = this.vehicleChosen.lat;
-    this.lng = this.vehicleChosen.lng;
-    this.position = true;
+    this.title = this.vehicleChosen.placa;
+    this.markerPosition = false;
+    this.getVehicleData();
     this.closeSidebar();
   }
 
