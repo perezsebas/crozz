@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   markerPosition: boolean = false;
   zoom: number = 11;
   zIndex: number = 1000;
-  iconUrl: string = './favicon.ico';
+  iconUrl: string = './assets/car.png';
   current: {};
   origin: {};
   destination: {};
