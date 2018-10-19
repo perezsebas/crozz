@@ -20,7 +20,7 @@
     "@angular/http": "^6.1.0",
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
-    "@angular/pwa": "^0.8.3",
+    "@angular/pwa": "^0.10.1",
     "@angular/router": "^6.1.0",
     "adm-zip": "^0.4.11",
     "agm-direction": "^0.6.0",

@@ -51,6 +51,7 @@ export class AppComponent implements OnInit {
     this.title = this.vehicleChosen.placa;
     this.markerPosition = false;
     this.getVehicleData();
+    setInterval(() => { this.getVehicleData();}, 1000);
     this.closeSidebar();
   }
 
