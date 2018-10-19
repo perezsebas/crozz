@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "github": "ng build --prod --aot --output-path docs --base-href \"/Crozz/\""
+    "github": "ng build --prod --aot --output-path docs --base-href \"/crozz/\""
   },
   "private": true,
   "dependencies": {
